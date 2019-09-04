@@ -1,4 +1,4 @@
-from Observer import Observer
+from DialObserver import DialObserver
 
 
 class Menu:
@@ -9,7 +9,7 @@ class Menu:
         self.sequence += key
         self.notify()
 
-    def register(self, prefix: str, observer: Observer):
+    def register(self, prefix: str, observer: DialObserver):
         self.observer[prefix] = observer
 
     def notify(self):

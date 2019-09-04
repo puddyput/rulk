@@ -1,10 +1,10 @@
 from unittest import TestCase
 
 from Menu import Menu
-from Observer import Observer
+from DialObserver import DialObserver
 
 
-class DummyObserver(Observer):
+class DummyDialObserver(DialObserver):
     lastSequence = ""
 
     def notify(self, sequence: str):
@@ -14,7 +14,7 @@ class DummyObserver(Observer):
 class TestMenu(TestCase):
     def test_notify(self):
         menu = Menu()
-        o = DummyObserver()
+        o = DummyDialObserver()
         menu.register("00", o)
         menu.key_event("0")
         self.assertEqual("", o.lastSequence)
