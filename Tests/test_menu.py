@@ -1,7 +1,7 @@
 from unittest import TestCase
 
+from DialObserver.DialObserver import DialObserver
 from Menu import Menu
-from DialObserver import DialObserver
 
 
 class DummyDialObserver(DialObserver):
