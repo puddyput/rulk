@@ -9,14 +9,14 @@ class Menu:
     _sequence = ""
     _observer = {}
 
-    def key_event(self, key: str):
+    def key_event(self, key: str) -> None:
         self._sequence += key
         self.notify()
 
-    def register(self, prefix: str, observer: DialObserver):
+    def register(self, prefix: str, observer: DialObserver) -> None:
         self._observer[prefix] = observer
 
-    def notify(self):
+    def notify(self) -> None:
         for prefix, observer in self._observer.items():
             if self._sequence.startswith(prefix):
                 observer.notify(self._sequence)
