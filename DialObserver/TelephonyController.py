@@ -1,7 +1,7 @@
 import subprocess
 
 from DialObserver.DialObserver import DialObserver
-from Menu import Menu
+from Menu.Menu import Menu
 
 
 class TelephonyController(DialObserver):
@@ -10,7 +10,7 @@ class TelephonyController(DialObserver):
         last_input = sequence[-1]
 
         if last_input == Menu.KEY_PICKUP:
-            self.start_call(sequence)
+            self.start_call(sequence[0:-1])
 
         if last_input == Menu.KEY_HANGUP:
             self.stop_call()

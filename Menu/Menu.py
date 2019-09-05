@@ -1,4 +1,5 @@
 from DialObserver import DialObserver
+from DialObserver.TelephonyController import TelephonyController
 
 
 class Menu:
@@ -8,6 +9,10 @@ class Menu:
 
     _sequence = ""
     _observer = {}
+    _telephony = None
+
+    def __init__(self):
+        self._telephony = TelephonyController()
 
     def key_event(self, key: str) -> None:
         self._sequence += key
@@ -20,3 +25,7 @@ class Menu:
         for prefix, observer in self._observer.items():
             if self._sequence.startswith(prefix):
                 observer.notify(self._sequence)
+                return
+
+        # no observer was triggered, pass to telephony
+        self._telephony.notify(self._sequence)
